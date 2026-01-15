@@ -1,0 +1,7 @@
+{
+  "name": "mentorgain-program-engine",
+  "private": true,
+  "scripts": {
+    "dev": "bun --cwd backend start:dev | bun --cwd frontend dev"
+  }
+}
