@@ -25,6 +25,9 @@ export class AuthService {
       throw new Error('Invalid Google token');
     }
     const { sub: googleId, email, name } = payload;
+    if (!email || !name) {
+      throw new Error('Google profile missing email or name');
+    }
 
     const user = await this.prisma.user.upsert({
       where: { googleId },
