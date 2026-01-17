@@ -33,13 +33,15 @@ model Program {
   startDate       DateTime
   endDate         DateTime
   createdAt       DateTime @default(now())
+  enrollments     Enrollment[]
 }
 
-model Enrollement {
+model Enrollment {
   id        String   @id @default(uuid())
   userId    String
   programId String
   responses Json
   createdAt DateTime @default(now())
+  program   Program @relation(fields: [programId], references: [id])
   @@unique([programId, userId])
 }
