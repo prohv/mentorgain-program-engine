@@ -50,20 +50,20 @@ export function LoginPage() {
 
 
   return (
-    <div className="flex-1 flex items-center justify-center p-4">
-      <Card className="w-full max-w-sm">
-        <CardHeader className="flex items-center gap-3">
+    <div className="flex-1 flex items-center justify-center p-2">
+      <Card className="w-full max-w-xs">
+        <CardHeader className="flex items-center gap-2">
           <img
             src="/mentorgain-engine.svg"
             alt="MentorGain logo"
-            className="h-8 w-8 rounded-md"
+            className="h-10 w-10 rounded-md"
           />
           <div>
             <CardTitle>MentorGain Program Engine</CardTitle>
             <CardDescription>Login to your account</CardDescription>
           </div>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4 items-center py-8">
+        <CardContent className="flex flex-col gap-4 items-center py-4">
           {error && (
             <div className="w-full p-3 mb-2 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md text-center animate-in fade-in slide-in-from-top-1">
               {error}
