@@ -21,3 +21,25 @@ enum UserRole {
   ADMIN
   USER
 }
+
+model Program {
+  id              String   @id @default(uuid())
+  name            String
+  description     String
+  isActive        Boolean  @default(true)
+  maxParticipants Int      @default(10)
+  price           Float
+  formSchema      Json
+  startDate       DateTime
+  endDate         DateTime
+  createdAt       DateTime @default(now())
+}
+
+model Enrollement {
+  id        String   @id @default(uuid())
+  userId    String
+  programId String
+  responses Json
+  createdAt DateTime @default(now())
+  @@unique([programId, userId])
+}
