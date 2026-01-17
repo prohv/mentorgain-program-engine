@@ -1,20 +1,23 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query,  ParseIntPipe, DefaultValuePipe } from '@nestjs/common';
 import { ProgramService } from './program.service';
-import { CreateProgramDto } from './dto/create-program.dto';
+// import { CreateProgramDto } from './dto/create-program.dto';
 import { UpdateProgramDto } from './dto/update-program.dto';
 
-@Controller('program')
+@Controller('programs')
 export class ProgramController {
   constructor(private readonly programService: ProgramService) {}
 
-  @Post()
-  create(@Body() createProgramDto: CreateProgramDto) {
-    return this.programService.create(createProgramDto);
-  }
+  // @Post()
+  // create(@Body() createProgramDto: CreateProgramDto) {
+  //   return this.programService.create(createProgramDto);
+  // }
 
   @Get()
-  findAll() {
-    return this.programService.findAll();
+  findAll(
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
+  ) {
+    return this.programService.findAll(page, limit);
   }
 
   @Get(':id')
