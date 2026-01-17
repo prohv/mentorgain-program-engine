@@ -1,22 +1,23 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
+import { ProfileController } from './app.controller';
 import { AppService } from './app.service';
 
-describe('AppController', () => {
-  let appController: AppController;
+describe('ProfileController', () => {
+  let profileController: ProfileController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
+      controllers: [ProfileController],
       providers: [AppService],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    profileController = app.get<ProfileController>(ProfileController);
   });
+
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+      expect(profileController.getProfile({ id: '1', email: 'test@example.com', role: 'user' })).toBeDefined();
     });
   });
 });

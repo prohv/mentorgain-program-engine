@@ -1,16 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { Request } from 'express';
-import { RequestWithUser } from './types/request-with-user.interface';
+import { User } from './types/user.interface';
 
 @Injectable()
 export class AppService {
-  googleLogin(req: RequestWithUser){
-    if(!req.user){
+  googleLogin(user: User) {
+    if (!user) {
       return 'User not found';
     }
     return {
       message: 'User found',
-      user: req.user,
+      user: user,
     };
   }
 }
